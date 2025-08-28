@@ -14,6 +14,14 @@ ENV LD_PRELOAD=/usr/lib/libjemalloc.so.2
 COPY --from=ghcr.io/astral-sh/uv:0.6.13 /uv /uvx /bin/
 RUN uv --version
 
+# Install Python MCP dependencies
+COPY --chown=node:node docker_mcp_requirements.txt mcp_edgar_requirements.txt ./
+RUN pip install --break-system-packages --no-cache-dir -r docker_mcp_requirements.txt
+
+# Initialize uv project and install MCP Edgar dependencies
+RUN uv init --no-readme --no-workspace .
+RUN uv add edgartools>=2.32.0 "mcp[cli]>=1.6.0" httpx>=0.28.1 pandas>=1.5.0 requests>=2.32.3 nest-asyncio>=1.6.0
+
 RUN mkdir -p /app && chown node:node /app
 WORKDIR /app
 

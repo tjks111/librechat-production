@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info:
+  title: Clay Webhook Integration
+  description: Send AI responses to Clay webhook
+  version: 1.0.0
+servers:
+  - url: https://api.clay.com/v3/sources/webhook
+paths:
+  /pull-in-data-from-a-webhook-c9db0d7a-24b4-4237-a16c-5b8dd38ebd0c:
+    post:
+      summary: Send AI conversation data to Clay
+      operationId: sendToClayWebhook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ai_response:
+                  type: string
+                  description: The AI's response message
+                user_query:
+                  type: string
+                  description: The user's original question
+                timestamp:
+                  type: string
+                  description: When the response was generated
+                conversation_id:
+                  type: string
+                  description: Unique identifier for the conversation
+                model:
+                  type: string
+                  description: AI model used
+                source:
+                  type: string
+                  description: Source of the data
+              required:
+                - ai_response
+                - user_query
+              additionalProperties: true
+      responses:
+        '200':
+          description: Successfully sent to Clay
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error

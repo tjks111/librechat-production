@@ -1,0 +1,13 @@
+name = "librechat-mcp-cloudflare"
+main = "src/index.js"
+compatibility_date = "2024-08-28"
+
+[env.production]
+name = "librechat-mcp-cloudflare"
+
+[vars]
+ACCOUNT_ID = "470c49d8e5e5db8b7f65a184939c1c6b"
+
+# Enable MCP server integration
+[ai]
+binding = "AI"

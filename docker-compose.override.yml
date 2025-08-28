@@ -1,0 +1,46 @@
+services:
+  api:
+    privileged: true  # Required for Docker-in-Docker
+    environment:
+      - HOST=0.0.0.0
+      - MONGO_URI=mongodb://mongodb:27017/LibreChat
+      - MEILI_HOST=http://meilisearch:7700
+      - RAG_PORT=${RAG_PORT:-8000}
+      - RAG_API_URL=http://rag_api:${RAG_PORT:-8000}
+      # MCP Configuration Environment Variables
+      - CLOUDFLARE_API_TOKEN=${CLOUDFLARE_API_TOKEN}
+      - CLOUDFLARE_ACCOUNT_ID=470c49d8e5e5db8b7f65a184939c1c6b
+      - NOTION_TOKEN=ntn_XX6773586158goDLN79OMRrtc7CI8J2d7a6QJCNwC5V4GY
+      - SEC_EDGAR_USER_AGENT=LibreChat MCP Server (${EMAIL:-contact@example.com})
+      - OPENFEC_API_KEY=${OPENFEC_API_KEY}
+      # Docker configuration for MCP
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - type: bind
+        source: ./.env
+        target: /app/.env
+      - type: bind
+        source: ./librechat.yaml
+        target: /app/librechat.yaml
+      # MCP Server Volume Mappings - Docker paths
+      - ./shared:/app/shared
+      - ./uploads:/app/uploads
+      - ./logs:/app/logs
+      - ./.config:/app/.config
+      # Docker MCP server files
+      - ./docker-mcp:/app/docker-mcp
+      # OpenFEC MCP server files
+      - ./mcp-openfec:/app/mcp-openfec
+      # Docker socket for docker-mcp server
+      - /var/run/docker.sock:/var/run/docker.sock
+      # MCP Edgar SEC server files
+      - ./mcp_edgar_server.py:/app/mcp_edgar_server.py
+      - ./edgar_sec:/app/edgar_sec
+      - ./mcp_edgar_requirements.txt:/app/mcp_edgar_requirements.txt
+      # Docker MCP requirements
+      - ./docker_mcp_requirements.txt:/app/docker_mcp_requirements.txt
+      # Regular volume mappings
+      - ./images:/app/client/public/images
+    # Add Node.js cache volume for better MCP server startup
+    tmpfs:
+      - /tmp/mcp-cache:rw,noexec,nosuid,size=100m
