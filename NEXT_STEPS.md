@@ -8,32 +8,17 @@
    - Set to **Public** or **Private** (your choice)
    - **DO NOT** initialize with README, .gitignore, or license (we already have these)
 
-2. **Copy the repository URL** (it will look like: `https://github.com/YOUR_USERNAME/librechat-production.git`)
+2. **Your repository has been created!** URL: `https://github.com/tjks111/librechat-production.git`
 
 ## Step 2: Connect Your Local Repository to GitHub
 
-Run these commands in your terminal (replace `YOUR_USERNAME` and `YOUR_REPO_NAME`):
-
-```bash
-# Add your new GitHub repository as origin
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-
-# Push your code to GitHub
-git push -u origin main
-```
+✅ **Already completed!** Your code has been pushed to:
+`https://github.com/tjks111/librechat-production.git`
 
 ## Step 3: Update Deployment Scripts
 
-After pushing to GitHub, update the repository URL in your deployment scripts:
-
-1. **Edit `deploy-to-production.sh`:**
-   - Change `REPO_URL="https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git"`
-
-2. **Edit `deploy-to-production.bat`:**
-   - Change `set REPO_URL=https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git`
-
-3. **Edit `DEPLOYMENT.md`:**
-   - Update all GitHub URLs to point to your repository
+✅ **Already completed!** All deployment scripts have been updated with the correct repository URL:
+`https://github.com/tjks111/librechat-production.git`
 
 ## Step 4: Deploy to Digital Ocean
 
@@ -46,7 +31,7 @@ After pushing to GitHub, update the repository URL in your deployment scripts:
 
 2. **Download and run the deployment script:**
    ```bash
-   wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO_NAME/main/deploy-to-production.sh
+   wget https://raw.githubusercontent.com/tjks111/librechat-production/main/deploy-to-production.sh
    chmod +x deploy-to-production.sh
    ./deploy-to-production.sh
    ```
@@ -78,7 +63,7 @@ After pushing to GitHub, update the repository URL in your deployment scripts:
 
 4. **Clone your repository:**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git /opt/librechat
+   git clone https://github.com/tjks111/librechat-production.git /opt/librechat
    cd /opt/librechat
    ```
 

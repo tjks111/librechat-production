@@ -6,7 +6,7 @@ echo 🚀 LibreChat Production Deployment Script
 echo ===========================================
 
 REM Configuration
-set REPO_URL=https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+set REPO_URL=https://github.com/tjks111/librechat-production.git
 set APP_DIR=C:\librechat
 set BACKUP_DIR=C:\librechat-backup-%date:~-4,4%%date:~-10,2%%date:~-7,2%-%time:~0,2%%time:~3,2%%time:~6,2%
 

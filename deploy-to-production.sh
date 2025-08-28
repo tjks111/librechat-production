@@ -9,7 +9,7 @@ echo "🚀 LibreChat Production Deployment Script"
 echo "==========================================="
 
 # Configuration
-REPO_URL="https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git"
+REPO_URL="https://github.com/tjks111/librechat-production.git"
 APP_DIR="/opt/librechat"
 BACKUP_DIR="/opt/librechat-backup-$(date +%Y%m%d-%H%M%S)"
 
