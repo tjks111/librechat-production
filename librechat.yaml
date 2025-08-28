@@ -169,7 +169,7 @@ mcpServers:
     args:
       - "-y"
       - "@cloudflare/mcp-server-cloudflare"
-      - "run"
+      
     env:
       CLOUDFLARE_API_TOKEN: "${CLOUDFLARE_API_TOKEN}"
       CLOUDFLARE_ACCOUNT_ID: "470c49d8e5e5db8b7f65a184939c1c6b"
@@ -223,9 +223,9 @@ mcpServers:
 #     disabled: false
   mcp-edgar-sec:
     type: stdio
-    command: uv
+    command: python
     args:
-      - "run"
+      
       - "python"
       - "mcp_edgar_server.py"
     env:
